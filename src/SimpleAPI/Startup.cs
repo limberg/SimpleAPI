@@ -36,7 +36,11 @@ namespace SimpleAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //Now I’m not necessarily recommending this is a change you should make in production.. 
+            //I just want to make any code change so you can see how our local git repo responds, 
+            //and how we can then push the change to our Github repo and trigger a Azure DevOps build.
+            
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
