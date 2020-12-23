@@ -5,6 +5,7 @@ using SimpleAPI.Controllers;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SimpleAPI.Test
 {
@@ -37,7 +38,10 @@ namespace SimpleAPI.Test
                     await response.Content.ReadAsStringAsync(),
                     new JsonSerializerOptions{PropertyNameCaseInsensitive = true});
 
-            Assert.Equal(5,responseObject?.Count);
+            var firstObject = responseObject.FirstOrDefault();
+
+            //Assert.Equal(5,responseObject?.Count);
+            Assert.Equal(DateTime.Now.AddDays(1).ToShortDateString(), firstObject.Date.ToShortDateString());
         }
     }
 }
